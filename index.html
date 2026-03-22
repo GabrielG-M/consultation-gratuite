@@ -4,80 +4,75 @@
 <meta charset="UTF-8">
 <title>Consultation Viandes Sous-Vide</title>
 <style>
-body, html {
+html, body {
   margin:0;
   padding:0;
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+  height:100%;
 }
 
-/* Images pleine largeur, défilent avec la page */
+/* Section unique avec image de fond */
 .section {
-  width:100%;
-  height:100vh;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('https://i.postimg.cc/5jdTRnky/Design-sans-titre.png');
   background-size: cover;
   background-position: center;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 50px;
 }
 
 /* Formulaire superposé */
-.form-overlay {
-  position: absolute;
-  top:0;
-  left:50%;
-  transform: translateX(-50%);
+.form-container {
   width: 90%;
-  max-width:600px;
+  max-width: 600px;
   padding: 50px 20px;
   background-color: rgba(0,0,0,0.75);
-  border-radius:12px;
-  box-shadow:0 0 20px #d71f26;
-  z-index: 10;
-  box-sizing: border-box;
+  border-radius: 12px;
+  box-shadow: 0 0 20px #d71f26;
 }
 
-.form-overlay h1 {
+.form-container h1 {
   text-align:center;
   font-size:2em;
-  margin-bottom:40px;
+  margin-bottom:20px;
 }
-
-.form-overlay p {
+.form-container p {
   text-align:center;
   font-size:1.2em;
-  line-height:1.6;
-  margin-bottom:30px;
+  line-height:1.5;
+  margin-bottom:20px;
 }
 
-.form-overlay label {
+.form-container label {
   display:block;
-  margin-top:40px;
+  margin-top:20px;
   font-weight:bold;
   color:#fff;
-  font-size:1.2em;
+  font-size:1.1em;
 }
-
-.form-overlay input,
-.form-overlay select,
-.form-overlay textarea {
-  width: 100%;
-  max-width: 100%;
-  padding: 15px;
-  margin-top: 10px;
-  border-radius: 6px;
-  border: none;
-  font-size: 16px;
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width:100%;
+  padding:15px;
+  margin-top:6px;
+  border-radius:6px;
+  border:none;
+  font-size:1em;
   box-sizing: border-box;
 }
 
 button {
-  margin-top:50px;
-  padding:18px;
+  margin-top:25px;
+  padding:20px;
   width:100%;
-  font-size:18px;
+  font-size:1.2em;
   background-color:#000;
   color:#fff;
   border:none;
@@ -90,22 +85,15 @@ button:hover { box-shadow:0 0 25px #d71f26; }
 .message {
   text-align:center;
   margin-top:25px;
-  font-size:18px;
+  font-size:1.2em;
   color:#fff;
 }
 </style>
 </head>
 <body>
 
-<!-- Section 1 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/mDLqxPw5/195530231-2908271639439452-6152651237367714314-n.png');"></div>
-
-<!-- Section 2 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');"></div>
-
-<!-- Section 3 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');">
-  <div class="form-overlay">
+<div class="section">
+  <div class="form-container">
     <h1>Réservez votre consultation gratuite</h1>
     <p>🎁 Recevez une <strong>boîte d’échantillons gourmets</strong> si votre foyer est qualifié 🥩.<br>
     Les deux adultes (M. et Mme) doivent remplir leurs noms et numéros de téléphone, sauf si vous vivez seul.</p>
@@ -217,6 +205,5 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
   });
 });
 </script>
-
 </body>
 </html>
