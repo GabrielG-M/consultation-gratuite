@@ -4,39 +4,39 @@
 <meta charset="UTF-8">
 <title>Consultation Viandes Sous-Vide</title>
 <style>
-html, body {
+body, html {
   margin:0;
   padding:0;
-  height:100%;
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
-  scroll-behavior: smooth;
 }
 
-/* Container global avec 3 images en background */
-.background {
+/* Sections avec images pleine largeur */
+.section {
   position: relative;
   width: 100%;
-  min-height: 300vh; /* 3x hauteur écran pour scroll */
-  background: 
-    url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg') top center / cover no-repeat,
-    url('https://i.postimg.cc/YSsg7Vfr/573312272-1335421028594651-758166083430097576-n.jpg') 100vh center / cover no-repeat,
-    url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg') 200vh center / cover no-repeat;
+  height: 100vh; /* chaque image prend tout l'écran */
+  background-size: cover;
+  background-position: center;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start; /* formulaire commence en haut */
 }
 
-/* Formulaire superposé long */
+/* Formulaire superposé */
 .form-overlay {
   position: absolute;
-  top:0;
+  top:20px;
   left:50%;
   transform: translateX(-50%);
   width:90%;
   max-width:600px;
-  padding:50px;
   background-color: rgba(0,0,0,0.75);
-  border-radius: 12px;
+  padding: 50px 20px;
+  border-radius:12px;
   box-shadow:0 0 20px #d71f26;
+  z-index: 10;
 }
 
 .form-overlay h1 {
@@ -54,7 +54,7 @@ html, body {
 
 .form-overlay label {
   display:block;
-  margin-top:20px;
+  margin-top:15px;
   font-weight:bold;
   color:#fff;
   font-size:1.1em;
@@ -62,18 +62,18 @@ html, body {
 
 .form-overlay input, .form-overlay select, .form-overlay textarea {
   width:100%;
-  padding:15px;
+  padding:12px;
   margin-top:6px;
   border-radius:6px;
   border:none;
-  font-size:1em;
+  font-size:16px;
 }
 
 button {
-  margin-top:25px;
-  padding:20px;
+  margin-top:20px;
+  padding:15px;
   width:100%;
-  font-size:1.2em;
+  font-size:18px;
   background-color:#000;
   color:#fff;
   border:none;
@@ -85,15 +85,16 @@ button:hover { box-shadow:0 0 25px #d71f26; }
 
 .message {
   text-align:center;
-  margin-top:25px;
-  font-size:1.2em;
+  margin-top:20px;
+  font-size:18px;
   color:#fff;
 }
 </style>
 </head>
 <body>
 
-<div class="background">
+<!-- Section 1 -->
+<div class="section" style="background-image:url('https://i.postimg.cc/mDLqxPw5/195530231-2908271639439452-6152651237367714314-n.png');">
   <div class="form-overlay">
     <h1>Réservez votre consultation gratuite</h1>
     <p>🎁 Recevez une <strong>boîte d’échantillons gourmets</strong> si votre foyer est qualifié 🥩.<br>
@@ -153,6 +154,12 @@ button:hover { box-shadow:0 0 25px #d71f26; }
   </div>
 </div>
 
+<!-- Section 2 -->
+<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');"></div>
+
+<!-- Section 3 -->
+<div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');"></div>
+
 <script>
 // Date min = aujourd'hui + 48h
 const dateInput = document.getElementById("date");
@@ -206,5 +213,6 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
   });
 });
 </script>
+
 </body>
 </html>
