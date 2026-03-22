@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Réservation Consultation Viandes Sous-Vide</title>
+<style>
+body { font-family: Arial, sans-serif; background-color: #000; color: #fff; padding: 20px; }
+h1 { text-align: center; color: #b22222; }
+p.intro { text-align: center; font-size: 18px; margin-bottom: 30px; }
+form { background-color: #111; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; box-shadow: 0px 0px 15px #333; }
+label { display: block; margin-top: 15px; font-weight: bold; }
+input, select, textarea { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: 1px solid #555; background-color: #222; color: #fff; }
+button { margin-top: 20px; background-color: #b22222; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 5px; cursor: pointer; }
+button:hover { background-color: #8b0000; }
+a { color: #b22222; }
+</style>
+</head>
+<body>
+
+<h1>Réservez votre consultation gratuite</h1>
+<p class="intro">
+Vous recevrez une <strong>boîte d’échantillons gratuite</strong> si vous êtes qualifiés pour la consultation.<br>
+Les deux personnes (M. et Mme) doivent remplir leurs noms et numéros de téléphone, sauf si vous vivez seul.
+</p>
+
+<form id="reservationForm" action="https://formspree.io/f/mnjgybyw" method="POST">
+
+<h2>M.</h2>
+<label>Nom :</label><input type="text" name="nomM" required>
+<label>Numéro de téléphone :</label><input type="text" name="telM" required>
+
+<h2>Mme</h2>
+<label>Nom :</label><input type="text" name="nomMme" required>
+<label>Numéro de téléphone :</label><input type="text" name="telMme" required>
+
+<label>Nombre d’adultes :</label><input type="number" name="adultes" min="1" max="10" required>
+<label>Nombre d’enfants :</label><input type="number" name="enfants" min="0" max="10" required>
+
+<label>Épiceries où vous achetez votre viande (2 max) :</label>
+<textarea name="epiceries" maxlength="100" required></textarea>
+
+<label>Dépense hebdomadaire pour la viande :</label>
+<select name="depense" required>
+  <option value="">--Choisir--</option>
+  <option value="moins50">Moins de 50$</option>
+  <option value="50ouplus">50$ ou plus</option>
+</select>
+
+<label>Avez-vous un congélateur séparé du frigo ?</label>
+<select name="congelateur" required>
+  <option value="">--Choisir--</option>
+  <option value="oui">Oui</option>
+  <option value="non">Non</option>
+</select>
+
+<label>Niveau de remplissage du congélateur :</label>
+<select name="niveauCongelateur" required>
+  <option value="">--Choisir--</option>
+  <option value="1/4">1/4</option>
+  <option value="1/2">1/2</option>
+  <option value="3/4">3/4</option>
+</select>
+
+<label>Adresse complète :</label><input type="text" name="adresse" required>
+<label>Ville / Code postal :</label><input type="text" name="ville" required>
+
+<label>Choisissez un jour pour la consultation (au minimum 48h après aujourd’hui) :</label>
+<input type="date" id="date" name="date" required>
+
+<label>Choisissez un créneau horaire :</label>
+<select name="heure" required>
+  <option value="">--Choisir une heure--</option>
+  <option value="09:00">09h00 - 10h00</option>
+  <option value="10:00">10h00 - 11h00</option>
+  <option value="11:00">11h00 - 12h00</option>
+  <option value="12:00">12h00 - 13h00</option>
+  <option value="13:00">13h00 - 14h00</option>
+  <option value="14:00">14h00 - 15h00</option>
+  <option value="15:00">15h00 - 16h00</option>
+  <option value="16:00">16h00 - 17h00</option>
+  <option value="17:00">17h00 - 18h00</option>
+  <option value="18:00">18h00 - 19h00</option>
+  <option value="19:00">19h00 - 20h00</option>
+  <option value="20:00">20h00 - 21h00</option>
+</select>
+
+<input type="hidden" name="_subject" value="Nouvelle réservation garde-manger">
+
+<button type="submit">Réservez ma consultation gratuite</button>
+</form>
+
+<script>
+// Date min = aujourd'hui + 48h
+const dateInput = document.getElementById("date");
+const today = new Date();
+today.setHours(0,0,0,0);
+const minDate = new Date(today.getTime() + 48*60*60*1000);
+dateInput.min = minDate.toISOString().split("T")[0];
+
+document.getElementById("reservationForm").addEventListener("submit", function(e){
+  const form = e.target;
+
+  // Vérifier que les deux noms et numéros sont remplis si adultes >1
+  const adultes = parseInt(form.adultes.value);
+  const nomM = form.nomM.value.trim();
+  const nomMme = form.nomMme.value.trim();
+  const telM = form.telM.value.trim();
+  const telMme = form.telMme.value.trim();
+
+  if(adultes > 1 && (!nomM || !nomMme || !telM || !telMme)){
+    e.preventDefault();
+    alert("Veuillez remplir les noms et numéros de téléphone pour M. et Mme si plus d’un adulte.");
+    return;
+  }
+
+  // Filtrage lead non qualifié
+  const depense = form.depense.value;
+  const epiceries = form.epiceries.value.toLowerCase();
+  const nonQualifie = (depense === "moins50") || epiceries.includes("super c") || epiceries.includes("maxi");
+
+  if(nonQualifie){
+    e.preventDefault();
+    alert("Merci pour votre intérêt. Ce formulaire est réservé aux foyers dépensant 50$ ou plus par semaine en viande et utilisant d’autres épiceries.");
+    return;
+  }
+
+  // Lead qualifié → message de confirmation
+  e.preventDefault();
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    form.innerHTML = `
+      <h1>Merci pour votre réservation !</h1>
+      <p>Vous recevrez un appel 1 jour avant la consultation pour confirmer votre présence.</p>
+      <p>Pour toute question, visitez : <a href="https://www.garde-manger.com/fr/" target="_blank">garde-manger.com</a></p>
+    `;
+  }).catch(error => {
+    alert("Une erreur est survenue, veuillez réessayer.");
+  });
+});
+</script>
+
+</body>
+</html>
