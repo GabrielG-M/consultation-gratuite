@@ -10,68 +10,65 @@ body, html {
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
+  scroll-behavior: smooth;
 }
 
-/* Sections avec images pleine largeur */
+/* Images de fond pleine largeur */
 .section {
-  position: relative;
-  width: 100%;
-  height: 100vh; /* chaque image prend tout l'écran */
+  width:100%;
+  height:100vh;
   background-size: cover;
   background-position: center;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start; /* formulaire commence en haut */
+  position: relative;
 }
 
 /* Formulaire superposé */
 .form-overlay {
   position: absolute;
-  top:20px;
+  top:0;
   left:50%;
   transform: translateX(-50%);
-  width:90%;
+  width: 90%;
   max-width:600px;
-  background-color: rgba(0,0,0,0.75);
   padding: 50px 20px;
+  background-color: rgba(0,0,0,0.75);
   border-radius:12px;
   box-shadow:0 0 20px #d71f26;
-  z-index: 10;
 }
 
 .form-overlay h1 {
   text-align:center;
   font-size:2em;
-  margin-bottom:20px;
+  margin-bottom:40px;
 }
 
 .form-overlay p {
   text-align:center;
   font-size:1.2em;
-  line-height:1.5;
-  margin-bottom:20px;
+  line-height:1.6;
+  margin-bottom:30px;
 }
 
 .form-overlay label {
   display:block;
-  margin-top:15px;
+  margin-top:40px; /* grand espace pour forcer scroll */
   font-weight:bold;
   color:#fff;
-  font-size:1.1em;
+  font-size:1.2em;
 }
 
 .form-overlay input, .form-overlay select, .form-overlay textarea {
   width:100%;
-  padding:12px;
-  margin-top:6px;
+  padding:15px;
+  margin-top:10px;
   border-radius:6px;
   border:none;
   font-size:16px;
 }
 
 button {
-  margin-top:20px;
-  padding:15px;
+  margin-top:50px;
+  padding:18px;
   width:100%;
   font-size:18px;
   background-color:#000;
@@ -85,7 +82,7 @@ button:hover { box-shadow:0 0 25px #d71f26; }
 
 .message {
   text-align:center;
-  margin-top:20px;
+  margin-top:25px;
   font-size:18px;
   color:#fff;
 }
@@ -95,6 +92,14 @@ button:hover { box-shadow:0 0 25px #d71f26; }
 
 <!-- Section 1 -->
 <div class="section" style="background-image:url('https://i.postimg.cc/mDLqxPw5/195530231-2908271639439452-6152651237367714314-n.png');">
+</div>
+
+<!-- Section 2 -->
+<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');">
+</div>
+
+<!-- Section 3 -->
+<div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');">
   <div class="form-overlay">
     <h1>Réservez votre consultation gratuite</h1>
     <p>🎁 Recevez une <strong>boîte d’échantillons gourmets</strong> si votre foyer est qualifié 🥩.<br>
@@ -154,12 +159,6 @@ button:hover { box-shadow:0 0 25px #d71f26; }
   </div>
 </div>
 
-<!-- Section 2 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');"></div>
-
-<!-- Section 3 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');"></div>
-
 <script>
 // Date min = aujourd'hui + 48h
 const dateInput = document.getElementById("date");
@@ -213,6 +212,5 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
   });
 });
 </script>
-
 </body>
 </html>
