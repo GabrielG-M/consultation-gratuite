@@ -6,41 +6,45 @@
 <style>
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #d71f26; /* fond rouge */
-  color: #000; /* texte noir */
-  padding: 20px;
+  background-color: #000; /* fond noir */
+  color: #fff; /* texte blanc par défaut */
+  padding: 0;
   margin:0;
 }
-.banner {
-  text-align:center;
-  margin-bottom:20px;
+.fullwidth-images {
+  display: flex;
+  flex-direction: column; /* images empilées verticalement */
 }
-.banner img {
-  width:100%;
-  max-width:800px;
-  border-radius:12px;
+.full-img {
+  width: 100%; /* pleine largeur */
+  height: auto; /* proportionnel */
+  display: block; 
+  margin: 0; 
+  border: 0; 
 }
 h1 {
   text-align: center;
-  color: #000; /* titre noir */
+  color: #fff; 
+  margin-top: 20px;
 }
 p.intro {
   text-align: center;
   font-size: 18px;
-  margin-bottom: 30px;
-  color: #000; /* texte intro noir */
+  margin: 15px 20px 30px 20px;
+  color: #fff; 
 }
 .form-section {
-  background-color:#fafafa; /* garder fond clair pour lisibilité */
+  background-color:#fff; 
   padding:20px;
   border-radius:10px;
-  margin-bottom:15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin: 15px 20px;
+  box-shadow: 0 0 15px #d71f26; /* glow rouge */
 }
 label {
   display: block;
   margin-top: 15px;
   font-weight: bold;
+  color: #000;
 }
 input, select, textarea {
   width: 100%;
@@ -51,37 +55,39 @@ input, select, textarea {
   font-size: 16px;
 }
 button {
-  background-color: #000; /* bouton noir */
-  color: white;
+  background-color: #000; 
+  color: #fff;
   font-size:18px;
   padding:14px 20px;
   border-radius:10px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(215,31,38,0.5);
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top:10px;
   width:100%;
 }
 button:hover {
-  background-color:#333; /* effet hover plus clair */
-  box-shadow:0 7px 15px rgba(0,0,0,0.15);
+  background-color:#333;
+  box-shadow:0 0 15px #d71f26;
 }
-a { color: #000; text-decoration:none; }
+a { color: #d71f26; text-decoration:none; }
 a:hover { text-decoration:underline; }
 .message {
   text-align:center;
   font-size:18px;
-  margin-top:20px;
-  color: #000;
+  margin:20px;
+  color: #fff;
 }
 </style>
 </head>
 <body>
 
-<div class="banner">
-  <img src="https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg" 
-       alt="Viande Sous-Vide" 
-       style="width:100%;max-width:800px;border-radius:12px;">
+<!-- Images en défilement vertical -->
+<div class="fullwidth-images">
+  <img src="https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg" alt="Bannière Viande" class="full-img">
+  <img src="https://i.postimg.cc/YSsg7Vfr/573312272-1335421028594651-758166083430097576-n.jpg" alt="Viande 1" class="full-img">
+  <img src="https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg" alt="Viande 2" class="full-img">
+  <img src="https://i.postimg.cc/YSsg7Vfr/573312272-1335421028594651-758166083430097576-n.jpg" alt="Viande 3" class="full-img">
 </div>
 
 <h1>Réservez votre consultation gratuite</h1>
