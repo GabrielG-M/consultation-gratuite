@@ -6,16 +6,10 @@
 <style>
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #fdf7f5;
-  color: #222;
+  background-color: #d71f26; /* fond rouge */
+  color: #000; /* texte noir */
   padding: 20px;
   margin:0;
-}
-img.logo {
-  display:block;
-  margin:0 auto 20px;
-  max-width:200px;
-  border-radius: 8px;
 }
 .banner {
   text-align:center;
@@ -28,15 +22,16 @@ img.logo {
 }
 h1 {
   text-align: center;
-  color: #d71f26;
+  color: #000; /* titre noir */
 }
 p.intro {
   text-align: center;
   font-size: 18px;
   margin-bottom: 30px;
+  color: #000; /* texte intro noir */
 }
 .form-section {
-  background-color:#fafafa;
+  background-color:#fafafa; /* garder fond clair pour lisibilité */
   padding:20px;
   border-radius:10px;
   margin-bottom:15px;
@@ -56,7 +51,7 @@ input, select, textarea {
   font-size: 16px;
 }
 button {
-  background-color: #d71f26;
+  background-color: #000; /* bouton noir */
   color: white;
   font-size:18px;
   padding:14px 20px;
@@ -68,21 +63,20 @@ button {
   width:100%;
 }
 button:hover {
-  background-color:#a4171e;
+  background-color:#333; /* effet hover plus clair */
   box-shadow:0 7px 15px rgba(0,0,0,0.15);
 }
-a { color: #d71f26; text-decoration:none; }
+a { color: #000; text-decoration:none; }
 a:hover { text-decoration:underline; }
 .message {
   text-align:center;
   font-size:18px;
   margin-top:20px;
+  color: #000;
 }
 </style>
 </head>
 <body>
-
-<img class="logo" src="https://www.garde-manger.com/wp-content/uploads/2022/02/logo-gm.png" alt="Garde-Manger">
 
 <div class="banner">
   <img src="https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg" 
@@ -190,7 +184,7 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
 
   if(adultes > 1 && (!nomM || !nomMme || !telM || !telMme)){
     messageDiv.innerHTML = "Veuillez remplir les noms et numéros de téléphone pour M. et Mme si plus d’un adulte.";
-    messageDiv.style.color = "red";
+    messageDiv.style.color = "white";
     return;
   }
 
@@ -203,7 +197,7 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
       Merci pour votre intérêt. Nous allons vous recontacter prochainement.<br>
       Pour toute question : <a href="https://www.garde-manger.com/fr/" target="_blank">garde-manger.com</a>
     `;
-    messageDiv.style.color = "#d71f26";
+    messageDiv.style.color = "white";
     return;
   }
 
@@ -218,11 +212,11 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
       <p>Vous recevrez un appel 1 jour avant la consultation pour confirmer votre présence.</p>
       <p>Pour toute question, visitez : <a href="https://www.garde-manger.com/fr/" target="_blank">garde-manger.com</a></p>
     `;
-    messageDiv.style.color = "#222";
+    messageDiv.style.color = "white";
     form.reset();
   }).catch(error => {
     messageDiv.innerHTML = "Une erreur est survenue, veuillez réessayer.";
-    messageDiv.style.color = "red";
+    messageDiv.style.color = "white";
   });
 });
 </script>
