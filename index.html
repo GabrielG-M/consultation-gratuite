@@ -11,9 +11,10 @@ body, html {
   background-color: #000;
   color: #fff;
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
-/* Images de fond pleine largeur */
+/* Images pleine largeur, défilent avec la page */
 .section {
   width:100%;
   height:100vh;
@@ -34,6 +35,8 @@ body, html {
   background-color: rgba(0,0,0,0.75);
   border-radius:12px;
   box-shadow:0 0 20px #d71f26;
+  z-index: 10;
+  box-sizing: border-box;
 }
 
 .form-overlay h1 {
@@ -51,19 +54,23 @@ body, html {
 
 .form-overlay label {
   display:block;
-  margin-top:40px; /* grand espace pour forcer scroll */
+  margin-top:40px;
   font-weight:bold;
   color:#fff;
   font-size:1.2em;
 }
 
-.form-overlay input, .form-overlay select, .form-overlay textarea {
-  width:100%;
-  padding:15px;
-  margin-top:10px;
-  border-radius:6px;
-  border:none;
-  font-size:16px;
+.form-overlay input,
+.form-overlay select,
+.form-overlay textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 button {
@@ -91,12 +98,10 @@ button:hover { box-shadow:0 0 25px #d71f26; }
 <body>
 
 <!-- Section 1 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/mDLqxPw5/195530231-2908271639439452-6152651237367714314-n.png');">
-</div>
+<div class="section" style="background-image:url('https://i.postimg.cc/mDLqxPw5/195530231-2908271639439452-6152651237367714314-n.png');"></div>
 
 <!-- Section 2 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');">
-</div>
+<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');"></div>
 
 <!-- Section 3 -->
 <div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');">
@@ -212,5 +217,6 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
   });
 });
 </script>
+
 </body>
 </html>
