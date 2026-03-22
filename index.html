@@ -2,156 +2,156 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Réservation Consultation Viandes Sous-Vide</title>
+<title>Consultation Viandes Sous-Vide</title>
 <style>
-body, html {
+html, body {
   margin:0;
   padding:0;
+  height:100%;
   font-family: Arial, sans-serif;
   background-color: #000;
   color: #fff;
   scroll-behavior: smooth;
 }
 
-.section {
+/* Container global avec 3 images en background */
+.background {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center;
+  min-height: 300vh; /* 3x hauteur écran pour scroll */
+  background: 
+    url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg') top center / cover no-repeat,
+    url('https://i.postimg.cc/YSsg7Vfr/573312272-1335421028594651-758166083430097576-n.jpg') 100vh center / cover no-repeat,
+    url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg') 200vh center / cover no-repeat;
 }
 
-/* Formulaire qui défile avec le scroll */
-.form-container {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 50px 20px;
+/* Formulaire superposé long */
+.form-overlay {
+  position: absolute;
+  top:0;
+  left:50%;
+  transform: translateX(-50%);
+  width:90%;
+  max-width:600px;
+  padding:50px;
   background-color: rgba(0,0,0,0.75);
   border-radius: 12px;
-  box-shadow: 0 0 20px #d71f26;
+  box-shadow:0 0 20px #d71f26;
 }
 
-.form-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
+.form-overlay h1 {
+  text-align:center;
+  font-size:2em;
+  margin-bottom:20px;
 }
 
-.form-container p {
-  text-align: center;
-  line-height: 1.4;
-  margin-bottom: 20px;
+.form-overlay p {
+  text-align:center;
+  font-size:1.2em;
+  line-height:1.5;
+  margin-bottom:20px;
 }
 
-.form-container label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
-  color: #fff;
+.form-overlay label {
+  display:block;
+  margin-top:20px;
+  font-weight:bold;
+  color:#fff;
+  font-size:1.1em;
 }
 
-.form-container input,
-.form-container select,
-.form-container textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  border-radius: 6px;
-  border: none;
-  font-size: 16px;
+.form-overlay input, .form-overlay select, .form-overlay textarea {
+  width:100%;
+  padding:15px;
+  margin-top:6px;
+  border-radius:6px;
+  border:none;
+  font-size:1em;
 }
 
 button {
-  margin-top: 15px;
-  padding: 14px;
-  width: 100%;
-  font-size: 18px;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #d71f26;
-  cursor: pointer;
+  margin-top:25px;
+  padding:20px;
+  width:100%;
+  font-size:1.2em;
+  background-color:#000;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  box-shadow:0 0 20px #d71f26;
+  cursor:pointer;
 }
-button:hover { box-shadow: 0 0 20px #d71f26; }
+button:hover { box-shadow:0 0 25px #d71f26; }
 
 .message {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 18px;
-  color: #fff;
+  text-align:center;
+  margin-top:25px;
+  font-size:1.2em;
+  color:#fff;
 }
 </style>
 </head>
 <body>
 
-<!-- Image 1 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/jSkY4Q45/572747608-1337203328416421-3726285898224121925-n.jpg');"></div>
+<div class="background">
+  <div class="form-overlay">
+    <h1>Réservez votre consultation gratuite</h1>
+    <p>🎁 Recevez une <strong>boîte d’échantillons gourmets</strong> si votre foyer est qualifié 🥩.<br>
+    Les deux adultes (M. et Mme) doivent remplir leurs noms et numéros de téléphone, sauf si vous vivez seul.</p>
 
-<!-- Formulaire qui défile -->
-<div class="form-container">
-  <h1>Réservez votre consultation gratuite</h1>
-  <p>🎁 Recevez une <strong>boîte d’échantillons gourmets</strong> si votre foyer est qualifié 🥩.<br>
-  Les deux adultes (M. et Mme) doivent remplir leurs noms et numéros de téléphone, sauf si vous vivez seul.</p>
+    <form id="reservationForm" action="https://formspree.io/f/mnjgybyw" method="POST">
+      <label>Nom M. :</label><input type="text" name="nomM" required>
+      <label>Téléphone M. :</label><input type="text" name="telM" required>
+      <label>Nom Mme :</label><input type="text" name="nomMme" required>
+      <label>Téléphone Mme :</label><input type="text" name="telMme" required>
+      <label>Nombre d’adultes :</label><input type="number" name="adultes" min="1" max="10" required>
+      <label>Nombre d’enfants :</label><input type="number" name="enfants" min="0" max="10" required>
+      <label>Épiceries :</label><textarea name="epiceries" maxlength="100" required></textarea>
+      <label>Dépense hebdomadaire :</label>
+      <select name="depense" required>
+        <option value="">--Choisir--</option>
+        <option value="moins50">Moins de 50$</option>
+        <option value="50ouplus">50$ ou plus</option>
+      </select>
+      <label>Congélateur séparé :</label>
+      <select name="congelateur" required>
+        <option value="">--Choisir--</option>
+        <option value="oui">Oui</option>
+        <option value="non">Non</option>
+      </select>
+      <label>Niveau congélateur :</label>
+      <select name="niveauCongelateur" required>
+        <option value="">--Choisir--</option>
+        <option value="1/4">1/4</option>
+        <option value="1/2">1/2</option>
+        <option value="3/4">3/4</option>
+      </select>
+      <label>Adresse :</label><input type="text" name="adresse" required>
+      <label>Ville / Code postal :</label><input type="text" name="ville" required>
+      <label>Date consultation :</label><input type="date" id="date" name="date" required>
+      <label>Créneau :</label>
+      <select name="heure" required>
+        <option value="">--Choisir une heure--</option>
+        <option value="09:00">09h00 - 10h00</option>
+        <option value="10:00">10h00 - 11h00</option>
+        <option value="11:00">11h00 - 12h00</option>
+        <option value="12:00">12h00 - 13h00</option>
+        <option value="13:00">13h00 - 14h00</option>
+        <option value="14:00">14h00 - 15h00</option>
+        <option value="15:00">15h00 - 16h00</option>
+        <option value="16:00">16h00 - 17h00</option>
+        <option value="17:00">17h00 - 18h00</option>
+        <option value="18:00">18h00 - 19h00</option>
+        <option value="19:00">19h00 - 20h00</option>
+        <option value="20:00">20h00 - 21h00</option>
+      </select>
+      <input type="hidden" name="_subject" value="Nouvelle réservation garde-manger">
+      <button type="submit">Réservez ma consultation gratuite</button>
+    </form>
 
-  <form id="reservationForm" action="https://formspree.io/f/mnjgybyw" method="POST">
-    <label>Nom M. :</label><input type="text" name="nomM" required>
-    <label>Téléphone M. :</label><input type="text" name="telM" required>
-    <label>Nom Mme :</label><input type="text" name="nomMme" required>
-    <label>Téléphone Mme :</label><input type="text" name="telMme" required>
-    <label>Nombre d’adultes :</label><input type="number" name="adultes" min="1" max="10" required>
-    <label>Nombre d’enfants :</label><input type="number" name="enfants" min="0" max="10" required>
-    <label>Épiceries :</label><textarea name="epiceries" maxlength="100" required></textarea>
-    <label>Dépense hebdomadaire :</label>
-    <select name="depense" required>
-      <option value="">--Choisir--</option>
-      <option value="moins50">Moins de 50$</option>
-      <option value="50ouplus">50$ ou plus</option>
-    </select>
-    <label>Congélateur séparé :</label>
-    <select name="congelateur" required>
-      <option value="">--Choisir--</option>
-      <option value="oui">Oui</option>
-      <option value="non">Non</option>
-    </select>
-    <label>Niveau congélateur :</label>
-    <select name="niveauCongelateur" required>
-      <option value="">--Choisir--</option>
-      <option value="1/4">1/4</option>
-      <option value="1/2">1/2</option>
-      <option value="3/4">3/4</option>
-    </select>
-    <label>Adresse :</label><input type="text" name="adresse" required>
-    <label>Ville / Code postal :</label><input type="text" name="ville" required>
-    <label>Date consultation :</label><input type="date" id="date" name="date" required>
-    <label>Créneau :</label>
-    <select name="heure" required>
-      <option value="">--Choisir une heure--</option>
-      <option value="09:00">09h00 - 10h00</option>
-      <option value="10:00">10h00 - 11h00</option>
-      <option value="11:00">11h00 - 12h00</option>
-      <option value="12:00">12h00 - 13h00</option>
-      <option value="13:00">13h00 - 14h00</option>
-      <option value="14:00">14h00 - 15h00</option>
-      <option value="15:00">15h00 - 16h00</option>
-      <option value="16:00">16h00 - 17h00</option>
-      <option value="17:00">17h00 - 18h00</option>
-      <option value="18:00">18h00 - 19h00</option>
-      <option value="19:00">19h00 - 20h00</option>
-      <option value="20:00">20h00 - 21h00</option>
-    </select>
-    <input type="hidden" name="_subject" value="Nouvelle réservation garde-manger">
-    <button type="submit">Réservez ma consultation gratuite</button>
-  </form>
-  <div id="message" class="message"></div>
+    <div id="message" class="message"></div>
+  </div>
 </div>
-
-<!-- Image 2 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/YSsg7Vfr/573312272-1335421028594651-758166083430097576-n.jpg');"></div>
-
-<!-- Image 3 -->
-<div class="section" style="background-image:url('https://i.postimg.cc/vZG5t5H2/550671744-1301797275290360-8850951111755897144-n.jpg');"></div>
 
 <script>
 // Date min = aujourd'hui + 48h
@@ -175,7 +175,6 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
 
   if(adultes > 1 && (!nomM || !nomMme || !telM || !telMme)){
     messageDiv.innerHTML = "Veuillez remplir les noms et numéros de téléphone pour M. et Mme si plus d’un adulte.";
-    messageDiv.style.color = "white";
     return;
   }
 
@@ -188,11 +187,9 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
       Merci pour votre intérêt. Nous allons vous recontacter prochainement.<br>
       Pour toute question : <a href="https://www.garde-manger.com/fr/" target="_blank">garde-manger.com</a>
     `;
-    messageDiv.style.color = "white";
     return;
   }
 
-  // Lead qualifié → envoyer à Formspree et afficher confirmation
   fetch(form.action, {
     method: "POST",
     body: new FormData(form),
@@ -203,14 +200,11 @@ document.getElementById("reservationForm").addEventListener("submit", function(e
       <p>Vous recevrez un appel 1 jour avant la consultation pour confirmer votre présence.</p>
       <p>Pour toute question, visitez : <a href="https://www.garde-manger.com/fr/" target="_blank">garde-manger.com</a></p>
     `;
-    messageDiv.style.color = "white";
     form.reset();
   }).catch(error => {
     messageDiv.innerHTML = "Une erreur est survenue, veuillez réessayer.";
-    messageDiv.style.color = "white";
   });
 });
 </script>
-
 </body>
 </html>
